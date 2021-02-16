@@ -1,0 +1,40 @@
+import Vue from 'vue'
+import {
+  Row,
+  Col,
+  Menu,
+  Submenu,
+  MenuItem,
+  Button,
+  Link,
+  Form,
+  FormItem,
+  Input,
+  Select,
+  Option,
+  Icon,
+  Tag,
+  Avatar,
+  Badge,
+  Message,
+  MessageBox
+} from 'element-ui'
+Vue.use(Row)
+Vue.use(Col)
+Vue.use(Menu)
+Vue.use(Submenu)
+Vue.use(MenuItem)
+Vue.use(Button)
+Vue.use(Link)
+Vue.use(Form)
+Vue.use(FormItem)
+Vue.use(Input)
+Vue.use(Select)
+Vue.use(Option)
+Vue.use(Icon)
+Vue.use(Tag)
+Vue.use(Avatar)
+Vue.use(Badge)
+
+Vue.prototype.$message = Message
+Vue.prototype.$msgBox = MessageBox
