@@ -6,7 +6,7 @@
         <div class="date">{{item.created}}</div>
       </div>
       <div class="body">
-        <div class="category">分类：{{item.category}}</div>
+        <div class="category"><i class="el-icon-price-tag">Tag：</i>{{item.category}}</div>
         <div class="description">{{item.description}}</div>
       </div>
       <div class="operate">
@@ -83,14 +83,11 @@ export default {
 }
 .article-list {
   margin-top: 25px;
-  background: #f6f6f6;
+  background: #ffffff;
   border-radius: 10px;
   box-shadow: 0 0 5px 0 #aaa;
   width: 100%;
   position: relative;
-  &:hover {
-    background: rgba(96, 126, 121, 0.18);
-  }
   cursor: pointer;
   .head {
     height: 50px;
@@ -99,7 +96,6 @@ export default {
     .title {
       flex: 1;
       font-size: 25px;
-      color: #607e79;
       width: 100%;
       white-space: nowrap;
       text-overflow: ellipsis;
@@ -120,6 +116,7 @@ export default {
     }
     .description {
       padding: 12px 0 20px;
+      color: #7b7b7b;
     }
   }
   .operate {
@@ -132,6 +129,10 @@ export default {
       color: #607e79;
       margin: 20px 0;
     }
+  }
+  &:hover {
+    background: rgba(96, 126, 121, 0.18);
+    color:#7d9cf0;
   }
 }
 </style>

@@ -21,8 +21,9 @@
     <footer>
       <HR/>
       <br>
-      <div style="text-align:center; margin:0 17px; ling-height:24px;">
-        <p><a target="_blank" href="http://www.cnblogs.com/whfr">blacksalt的blog</a> - 创建于 2021年2月15日</p>
+      <div>
+        <span><el-link type="success" target="_blank" href="https://github.com/black-salt/blacksalt-blog-front">blacksalt的blog</el-link> - 创建于 2021年2月15日</span>
+        <span style="margin-left:40px">Friend Link : <el-link type="success" href="https://github.com/black-salt">"https://github.com/black-salt"</el-link></span>
       </div>
       <br>
     </footer>
@@ -48,6 +49,7 @@ main{
 }
 footer{
   margin-top:60px;
+  text-align:center;
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 </style>

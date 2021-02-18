@@ -121,7 +121,7 @@ export default {
 <style lang="less" scoped>
 .operate-bar {
   margin-top: 25px;
-  background: #f2f2f2;
+  background: #ffffff;
   padding: 0 20px;
   border: 1px solid #e2e2e2;
   border-radius: 5px 5px 0 0;
@@ -133,7 +133,7 @@ export default {
     height: 60px;
     padding: 0 10px;
     border-bottom: 1px solid #e7e7e7;
-    background: #f6f6f6;
+    background: #ffffff;
     box-shadow: 0 0 5px 0 #aaa;
     margin-top:10px;
     margin-bottom:10px;
