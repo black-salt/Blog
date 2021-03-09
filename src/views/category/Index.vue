@@ -46,9 +46,7 @@ export default {
         if (code === 0) {
           this.categoryList = data
           this.total = data.length
-          this.$emit('loadingChange')
         } else {
-          this.$emit('loadingChange')
           this.$message.error(msg)
         }
       })
@@ -60,7 +58,6 @@ export default {
           cancelButtonText: '取消'
         })
         .then(({ value }) => {
-          this.$emit('loadingChange')
           return addCategory({
             title: value
           }).then(res => {
@@ -69,7 +66,6 @@ export default {
               this.getCategories()
               this.$message.success('创建成功')
             } else {
-              this.$emit('loadingChange')
               this.$message.error(msg)
             }
           })
@@ -86,7 +82,6 @@ export default {
           inputValue: item.title
         })
         .then(({ value }) => {
-          this.$emit('loadingChange')
           return updateCategory({
             id: item._id,
             title: value
@@ -96,20 +91,17 @@ export default {
               this.getCategories()
               this.$message.success('修改成功')
             } else {
-              this.$emit('loadingChange')
               this.$message.error(msg)
             }
           })
         })
     },
     handleDeleteCategory (id) {
-      this.$emit('loadingChange')
       deleteCategory(id).then(res => {
         const { code, msg } = res
         if (code === 0) {
           this.getCategories()
         } else {
-          this.$emit('loadingChange')
           this.$message.error(msg)
         }
       })

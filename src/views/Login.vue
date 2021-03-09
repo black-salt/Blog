@@ -3,7 +3,7 @@
     <div class="login-area">
       <div class="login-form">
         <div class="login-form-header">
-          <div class="pd10 font-weight">Login to our site </div>
+          <div class="pd10 font-weight">Login</div>
           <div class="pdb10">Enter your username and password to log in:</div>
         </div>
         <div class="login-form-body">
@@ -111,9 +111,9 @@ export default {
   position: relative;
   .login-area {
     width: 555px;
-    position: absolute;
+    position: relative;
     left: 50%;
-    top: 40vh;
+    top: 30vh;
     transform: translate(-50%, -50%);
     .login-form {
       background: rgba(173, 171, 171, 0.3);

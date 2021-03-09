@@ -7,7 +7,8 @@ import '../src/plugins/element-ui.js'
 
 import axios from 'axios'
 import { store, mutations } from './store'
-axios.defaults.baseURL = '/api'
+axios.defaults.withCredentials = true // 允许携带cookie
+axios.defaults.baseURL = 'http://101.200.156.94:3072/api'
 // 请求拦截器
 axios.interceptors.request.use(
   (config) => {

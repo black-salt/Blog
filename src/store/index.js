@@ -1,4 +1,3 @@
-import Vue from 'vue'
 import { getCurrentUserInfo } from '@/api/getData'
 const TOKENKEY = 'token.key'
 const USERKEY = 'userInfo'
@@ -15,10 +14,10 @@ const storage = {
     localStorage.removeItem(key)
   }
 }
-const store = Vue.observable({
+const store = {
   token: storage.get(TOKENKEY),
   userInfo: storage.get(USERKEY) || {}
-})
+}
 const mutations = {
   setToken (token) {
     store.token = token

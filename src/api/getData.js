@@ -83,8 +83,12 @@ export const deleteCategory = (params) => {
   })
 }
 // 文章
-export const getArticleList = () => {
-  return axios.get('/article')
+export const getArticleList = (params) => {
+  return axios({
+    method: 'get',
+    url: '/article',
+    params: params
+  })
 }
 export const getArticleInfoById = (params) => {
   return axios.get(`/article/${params}`)

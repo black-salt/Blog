@@ -3,11 +3,12 @@
     <div class="register-area">
       <div class="register-form">
         <div class="register-form-header">
-          <div class="pd10 font-weight">register</div>
+          <div class="pd10 font-weight">Register</div>
+          <div class="pdb10">Find someting interesting</div>
           <div class="upload-avatar">
             <div class="upload-button">
               <label class="upload-img-btn" for="upload-img">
-                <i class="el-icon-plus" style='color:#fff;'></i>
+                <i class="el-icon-plus" style='color:#7d9cf0;'></i>
               </label>
               <input id="upload-img" type="file" @change="uploadImage">
             </div>
@@ -222,7 +223,7 @@ export default {
   position: relative;
   .register-area {
     width: 555px;
-    position: absolute;
+    position: relative;
     left: 50%;
     top: 40vh;
     transform: translate(-50%, -50%);
@@ -248,7 +249,7 @@ export default {
           .upload-button {
             display: inline-block;
             .upload-img-btn {
-              border: 2px dashed #d9d9d9;
+              border: 2px dashed #7d9cf0;
               border-radius: 6px;
               cursor: pointer;
               position: relative;

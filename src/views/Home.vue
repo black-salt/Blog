@@ -1,13 +1,8 @@
 <template>
 <div>
-<div class="spinner" v-show="isloading">
-  <div class="bounce1"></div>
-  <div class="bounce2"></div>
-  <div class="bounce3"></div>
-</div>
-  <el-row v-show="!isloading">
-    <el-col :span="13" ><ArticleList @loadingChange="changeALoading"></ArticleList></el-col>
-    <el-col :span="8" :offset="3"><Category @loadingChange="changeCLoading"></Category></el-col>
+  <el-row>
+    <el-col :span="13" ><ArticleList></ArticleList></el-col>
+    <el-col :span="8" :offset="3"><Category></Category></el-col>
   </el-row>
 </div>
 </template>
@@ -18,30 +13,12 @@ import ArticleList from './article/Index'
 export default {
   components: {
     Category, ArticleList
-  },
-  data () {
-    return {
-      categoryLoading: true,
-      articleLoading: true
-    }
-  },
-  methods: {
-    changeCLoading () {
-      this.categoryLoading = !this.categoryLoading
-    },
-    changeALoading () {
-      this.articleLoading = !this.articleLoading
-    }
-  },
-  computed: {
-    isloading () {
-      return this.categoryLoading || this.articleLoading
-    }
   }
 }
 </script>
 
 <style scoped>
+
 .spinner {
   margin: 100px auto 0;
   width: 70px;

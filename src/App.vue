@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="app">
 
     <header>
       <el-menu mode="horizontal" class="el-menu-demo" :router="true">
@@ -7,8 +7,7 @@
         <el-submenu style="float:right; margin-right:10vw" index='sub'>
           <template #title><el-avatar :src="userInfo.avatar"></el-avatar></template>
           <el-menu-item index="/login">登录</el-menu-item>
-          <el-menu-item index="/register">注册</el-menu-item>
-          <el-menu-item index="/profile">设置</el-menu-item>
+          <el-menu-item index="/setting">设置</el-menu-item>
         </el-submenu>
         <el-menu-item index="/AddOrEditArticle/0" style="float:right"><el-button type="primary">写文章<i class="el-icon-upload el-icon--right"></i></el-button></el-menu-item>
       </el-menu>
@@ -42,6 +41,10 @@ export default {
 </script>
 
 <style scoped>
+.app{
+  background-color:rgb(238, 238, 238);
+}
+
 main{
   margin-top:20px;
   margin-left:10vw;

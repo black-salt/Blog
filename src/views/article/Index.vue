@@ -14,6 +14,7 @@
         <i class="el-icon-delete" @click.stop="handleDeleteArticle(item.id)"></i>
       </div>
     </div>
+    <div class="loading">...</div>
   </div>
 </template>
 <script>
@@ -24,52 +25,97 @@ import {
 export default {
   data () {
     return {
-      articleList: [],
-      showList: []
+      articleList: []
     }
   },
   methods: {
-    getArticlePaged () {
-      getArticleList().then(res => {
-        const { code, data, msg } = res
-        if (code === 0) {
-          const tempArr = data.data.map(item => {
-            item.created = item.created.split(' ')[0]
-            return item
-          })
-          this.articleList = tempArr
-          this.getShowList()
-        }
-      })
-    },
-    getShowList () {
-      if (this.$route.params.category) {
-        this.showList = this.articleList.filter((item) => { return this.$route.params.category === item.category })
-        this.$emit('loadingChange')
-      } else {
-        this.showList = this.articleList
-        this.$emit('loadingChange')
-      }
-    },
     handleDeleteArticle (id) {
-      this.$emit('loadingChange')
       deleteArticle(id).then(res => {
         const { code, msg } = res
         if (code === 0) {
           this.getArticlePaged()
           this.$message.success('删除成功！')
         } else {
-          this.$emit('loadingChange')
           this.$message.error('删除失败')
         }
       })
     },
     goArticleDetail (id) {
       this.$router.push('/articleDetail?id=' + id)
+    },
+    checkInPage () {
+      const el = document.querySelector('.loading')
+      const pageHeight = document.documentElement.clientHeight
+      const contentTop = el.getBoundingClientRect().top
+      const contentHeight = el.offsetHeight
+      if ((contentTop < pageHeight && contentTop >= 0) || (contentTop < 0 && (contentTop + contentHeight > 0))) {
+        getArticleList({ pageNum: this.pageNum }).then(res => {
+          const { code, data, msg } = res
+          if (code === 0) {
+            const tempArr = data.data.map(item => {
+              item.created = item.created.split(' ')[0]
+              return item
+            })
+            tempArr.forEach(element => {
+              this.articleList.push(element)
+            })
+            if (this.articleList.length < (data.totalSize)) {
+              this.$nextTick(this.checkInPage)
+            }
+          }
+        })
+      }
+    }
+  },
+  computed: {
+    showList () {
+      if (this.$route.params.category) {
+        return this.articleList.filter((item) => { return this.$route.params.category === item.category })
+      } else {
+        return this.articleList
+      }
+    },
+    pageNum () {
+      return Math.floor(this.articleList.length / 10) + 1
     }
   },
   mounted () {
-    this.getArticlePaged()
+    var totalSize = 1
+    var intersectionObserver = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          if (this.articleList.length < (totalSize)) {
+            getArticleList({ pageNum: this.pageNum }).then(res => {
+              const { code, data, msg } = res
+              if (code === 0) {
+                const tempArr = data.data.map(item => {
+                  item.created = item.created.split(' ')[0]
+                  return item
+                })
+                tempArr.forEach(element => {
+                  this.articleList.push(element)
+                })
+                totalSize = data.totalSize
+                if (this.articleList.length === (totalSize)) {
+                  intersectionObserver.unobserve(document.querySelector('.loading'))
+                  console.log('qvchu')
+                } else {
+                  if (this.articleList.length < (totalSize)) {
+                    this.$nextTick(this.checkInPage)
+                  }
+                }
+              }
+            })
+          } else {
+            intersectionObserver.unobserve(document.querySelector('.loading'))
+          }
+        }
+      }
+    )
+    // 开始观察
+    intersectionObserver.observe(
+      document.querySelector('.loading')
+    )
   }
 }
 </script>
@@ -111,7 +157,7 @@ export default {
     padding: 0 25px;
     .category {
       font-size: 14px;
-      color: #7b7b7b;
+      color: #3dc279;
       margin-top: 10px;
     }
     .description {

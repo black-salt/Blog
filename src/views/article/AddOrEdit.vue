@@ -112,7 +112,7 @@ export default {
             const { code, msg } = res
             if (code === 0) {
               this.$message.success('文章发布成功！')
-              this.$router.push('/article')
+              this.$router.push('/')
             } else {
               this.$message.error(msg)
             }
@@ -133,7 +133,7 @@ export default {
             const { code, msg } = res
             if (code === 0) {
               this.$message.success('文章修改成功！')
-              this.$router.push('/article')
+              this.$router.push('/')
             } else {
               this.$message.error(msg)
             }
